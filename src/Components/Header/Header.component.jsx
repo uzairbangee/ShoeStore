@@ -10,7 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import {ActionContext} from '../../Context/GlobalState';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Grid from '@material-ui/core/Grid';
+import {Link} from 'react-router-dom';
 import CartItem from '../CartItem/CartItem.component';
 
 const useStyles = makeStyles((theme) => ({
@@ -145,9 +145,11 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
+        <Link to={`/`}>
           <Typography className={classes.title} variant="h6" noWrap>
             SHOE STORE
           </Typography>
+        </Link>
           
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
