@@ -146,9 +146,7 @@ export default function PrimarySearchAppBar() {
       <AppBar position="static">
         <Toolbar>
         <Link to={`/`}>
-          <Typography className={classes.title} variant="h6" noWrap>
-            SHOE STORE
-          </Typography>
+          <img src="https://pluspng.com/img-png/nike-logo-png-nike-logo-png-4944.png" width="100"/>
         </Link>
           
           <div className={classes.grow} />
