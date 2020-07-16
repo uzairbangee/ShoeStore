@@ -139,28 +139,7 @@ export default function PrimarySearchAppBar() {
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-  // const renderMobileMenu = (
-  //   <Menu
-  //     anchorEl={mobileMoreAnchorEl}
-  //     anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-  //     id={mobileMenuId}
-  //     keepMounted
-  //     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-  //     open={isMobileMenuOpen}
-  //     onClose={handleMobileMenuClose}
-  //   >
 
-  //     <MenuItem>
-  //       <IconButton aria-label="show 11 new notifications" color="inherit">
-  //         <Badge badgeContent={11} color="secondary">
-  //         <ShoppingCart />
-  //         </Badge>
-  //       </IconButton> 
-  //       <p>Notifications</p>
-  //     </MenuItem>
-
-  //   </Menu>
-  // );
 
   return (
     <div className={classes.grow}>
@@ -198,7 +177,8 @@ export default function PrimarySearchAppBar() {
                       const product = products.filter(product => product.id === item.productId);
                       return (
                         <CartItem 
-                          key={product.id}
+                          key={product[0].id}
+                          productId={item.productId}
                           quantity={item.quantity}
                           price={item.price}
                           title={product[0].title}

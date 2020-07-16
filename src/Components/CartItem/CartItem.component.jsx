@@ -1,10 +1,32 @@
 import React, {useContext} from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import DeleteIcon from '@material-ui/icons/Delete';
 import {ActionContext} from '../../Context/GlobalState';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
 
-const CartItem = ({title, img, price, quantity}) => {
+
+const CartItem = ({title, img, price, quantity, productId}) => {
+
+    const {cart, dispatch} = useContext(ActionContext);
+
+    const removeFromCart = (id) => {
+        const cartcheck = cart.filter(item => item.productId === id);
+        const cartindex = cart.findIndex(item => item.productId === id);
+        cart.splice(cartindex, 1);
+
+        console.log(cartcheck);
+        
+        if(cartcheck.length !== 0){
+            dispatch({
+                type : "REMOVE_CART",
+                payload: {
+                    quantity : cartcheck[0].quantity,
+                    cartTotal : cartcheck[0].price,
+                    cart
+                }
+            })
+        }
+    }
 
     return (
         <div>
@@ -21,9 +43,7 @@ const CartItem = ({title, img, price, quantity}) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={2} sm={2}>
-                    <Typography variant="body1" color="textSecondary" component="p">
-                        {quantity} x $ {price}
-                    </Typography>
+                    <DeleteIcon onClick={() => removeFromCart(productId)}/>
                 </Grid>
             </Grid>
         </div>

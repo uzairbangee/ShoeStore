@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductPage = () => {
     const classes = useStyles();
-    const {products, cart, cartTotal, dispatch} = useContext(ActionContext);
+    const {products, cart, dispatch} = useContext(ActionContext);
     const { slug } = useParams();
     const shoe = products.filter(product => product.slug === slug);
 
@@ -59,11 +59,15 @@ const ProductPage = () => {
         }
         else{
             const quantity = checkcart[0].quantity + 1;
-            const price = quantity * checkcart[0].price;
+            const price = quantity * shoe[0].price;
 
             const newcart = cart.map(item => {
-                if(cart.productId === checkcart[0].id){
-                    item = {...item, quantity, price} 
+                if(item.productId === checkcart[0].productId){
+                    item = {
+                        productId : checkcart[0].productId,
+                        quantity : quantity,
+                        price : price
+                    }
                 }
                 return item;
             })

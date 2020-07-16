@@ -10,8 +10,8 @@ const Reducer = (state, action) => {
         case "REMOVE_CART":
             return {
                 ...state,
-                cartQuantity : state.cartQuantity - 1,
-                cartTotal : action.payload.cartTotal,
+                cartQuantity : state.cartQuantity - action.payload.quantity,
+                cartTotal : state.cartTotal - action.payload.cartTotal,
                 cart : action.payload.cart
             }
         default:
